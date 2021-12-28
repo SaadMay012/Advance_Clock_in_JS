@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital - Analog - StopWatch</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="divContainer">
+
+            <div class="divColumn">
+
+                <h1>Digital Clock</h1>
+
+                <div class="timeContainer">
+
+                    <div class="timeDiv"></div>
+
+                    <h1 class="colon">:</h1>
+
+                    <div class="timeDiv"></div>
+
+                    <h1 class="colon">:</h1>
+
+                    <div class="timeDiv"></div>
+
+                </div>
+
+                <h1 class="date">Date :</h1>
+
+                <div class="dateDiv"></div>
+
+                <h1 class="date">Day &nbsp;:</h1>
+
+                <div class="dayDiv"></div>
+
+            </div>
+
+            <div class="divColumn">
+
+                <h1>Analog Clock</h1>
+
+                <div class="clockCircle">
+
+                    <div class="secondHand"></div>
+
+                    <div class="minuteHand"></div>
+
+                    <div class="hourHand"></div>
+
+                </div>
+
+            </div>
+
+            <div class="divColumn">
+
+                <h1>StopWatch</h1>
+
+                <div class="clockCircle stopWatchCircle">
+
+                    <div class="secondHand stopWatchHand"></div>
+
+                </div>
+
+                <div class="timeContainer stopWatchContainer">
+
+                    <div class="timeDiv stopWatchDiv stopWatchDivH"></div>
+
+                    <h1 class="colon" style="margin-top: -4%">:</h1>
+
+                    <div class="timeDiv stopWatchDiv stopWatchDivM"></div>
+
+                    <h1 class="colon" style="margin-top: -4%">:</h1>
+
+                    <div class="timeDiv stopWatchDiv stopWatchDivS"></div>
+
+                    <h1 class="colon" style="margin-top: -4%">:</h1>
+
+                    <div class="timeDiv stopWatchDiv stopWatchDivMS"></div>
+
+                </div>
+
+                <button class="btn1" onclick="stopTime()">Stop</button>
+
+                <button class="btn1" onclick="startBtn()">Start</button>
+
+                <button class="btn1" onclick="pauseTime()" disabled>Pause</button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+</body>
+
+<script>
+
+    let hourDiv = document.getElementsByClassName('timeDiv')[0];
+
+    let minDiv = document.getElementsByClassName('timeDiv')[1];
+
+    let secDiv = document.getElementsByClassName('timeDiv')[2];
+
+    let dateDiv = document.getElementsByClassName('dateDiv')[0];
+
+    let dayDiv = document.getElementsByClassName('dayDiv')[0]
+
+    function digitalClock() {
+        let date = new Date();
+
+        let h = date.getHours();
+
+        let m = date.getMinutes();
+
+        let s = date.getSeconds();
+
+        hourDiv.innerText = h + 'h';
+
+        minDiv.innerText = m + 'm';
+
+        secDiv.innerText = s + 's';
+
+        let weekArray = new Array(7);
+
+        weekArray[0] = 'Sunday';
+        weekArray[1] = 'Monday';
+        weekArray[2] = 'Tuesday';
+        weekArray[3] = 'Wednesday';
+        weekArray[4] = 'Thursday';
+        weekArray[5] = 'Friday';
+        weekArray[6] = 'Saturday';
+
+        let weekDay = weekArray[date.getDay()]
+
+        let d = date.getDate();
+
+        let monthArray = new Array(12);
+
+        monthArray[0] = 'Junuary';
+        monthArray[1] = 'Febuaury';
+        monthArray[2] = 'March';
+        monthArray[3] = 'April';
+        monthArray[4] = 'May';
+        monthArray[5] = 'June';
+        monthArray[6] = 'July';
+        monthArray[7] = 'August';
+        monthArray[8] = 'September';
+        monthArray[9] = 'October';
+        monthArray[10] = 'November';
+        monthArray[11] = 'December';
+
+        let monthDay = monthArray[date.getMonth()];
+
+        let y = date.getFullYear()
+
+        dateDiv.innerText = monthDay + ' ' + d + ', ' + y;
+
+        dayDiv.innerText = weekDay;
+
+    }
+
+    setInterval(digitalClock, 1000);
+
+    let secondHand = document.getElementsByClassName('secondHand')[0];
+    let minuteHand = document.getElementsByClassName('minuteHand')[0];
+    let hourHand = document.getElementsByClassName('hourHand')[0];
+
+    function analogClock() {
+        let date = new Date();
+
+        let h = date.getHours();
+
+        let m = date.getMinutes();
+
+        let s = date.getSeconds();
+
+        let hr_rotation = 30 * h + m / 2;
+
+        let min_rotation = 6 * m;
+
+        let sec_rotation = 6 * s;
+
+        secondHand.style.transform = `rotate(${sec_rotation}deg)`;
+        minuteHand.style.transform = `rotate(${min_rotation}deg)`;
+        hourHand.style.transform = `rotate(${hr_rotation}deg)`;
+    }
+
+    setInterval(analogClock, 1000);
+
+    let stopWatchHand = document.getElementsByClassName('stopWatchHand')[0];
+
+    let stopWatchHoursDiv = document.getElementsByClassName('stopWatchDivH')[0];
+
+    let stopWatchMinutesDiv = document.getElementsByClassName('stopWatchDivM')[0];
+
+    let stopWatchSecondDiv = document.getElementsByClassName('stopWatchDivS')[0];
+
+    let stopWatchMiliSecondDiv = document.getElementsByClassName('stopWatchDivMS')[0];
+
+    let startButton = document.getElementsByClassName('btn1')[1];
+
+    let pauseButton = document.getElementsByClassName('btn1')[2];
+
+    stopWatchHoursDiv.innerText = '0h'
+    stopWatchMinutesDiv.innerText = '0m'
+    stopWatchSecondDiv.innerText = '0s'
+    stopWatchMiliSecondDiv.innerText = '0ms'
+
+    let miliseconds = 1;
+    let stopSecond = 1;
+    let stopMinutes = 1;
+    let stopHours = 1;
+
+    let q = 0;
+    let w = 0;
+    let e = 0;
+    let r = 0;
+
+    let x;
+
+    function startBtn() {
+        function startWatch() {
+            q = miliseconds++;
+            stopWatchMiliSecondDiv.innerText = q + 'ms';
+            if (q == 100) {
+                w = stopSecond++;
+                stopWatchSecondDiv.innerText = w + 's';
+
+                miliseconds = 1;
+
+                let a = w;
+
+                stop_rotation = 6 * a;
+
+                stopWatchHand.style.transform = `rotate(${stop_rotation}deg)`;
+            }
+
+            if (stopSecond == 61) {
+                e = stopMinutes++;
+                stopWatchMinutesDiv.innerText = e + 'm';
+                stopSecond = 1;
+                miliseconds = 1;
+            }
+
+            if (stopMinutes == 61) {
+                r = stopHours++;
+                stopWatchHoursDiv.innerText = r + 'h';
+                stopMinutes = 1;
+                stopSecond = 1;
+                miliseconds = 1;
+            }
+        }
+
+        x = setInterval(startWatch, 10)
+
+        startButton.disabled = true;
+        pauseButton.disabled = false;
+    }
+
+    function pauseTime() {
+        clearInterval(x);
+        pauseButton.disabled = true;
+        startButton.disabled = false;
+    }
+
+    function stopTime() {
+        clearInterval(x);
+
+        miliseconds = 1;
+        stopSecond = 1;
+        stopMinutes = 1;
+        stopHours = 1;
+
+        stopWatchHand.style.transform = `rotate(0deg)`;
+        
+        stopWatchHoursDiv.innerText = '0h'
+        stopWatchMinutesDiv.innerText = '0m'
+        stopWatchSecondDiv.innerText = '0s'
+        stopWatchMiliSecondDiv.innerText = '0ms'
+
+        pauseButton.disabled = true;
+        startButton.disabled = false;
+    }
+
+</script>
+
+</html>

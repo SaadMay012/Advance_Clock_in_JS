@@ -1,0 +1,217 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    text-align: center;
+    font-family: 'KoHo', sans-serif;
+}
+
+nav{
+    width: 100%;
+    height: 15vh;
+    background-color: #1E1E1E;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0% 5%;
+    padding-right: 12%;
+    box-sizing: border-box;
+}
+
+ul{
+    width: 42%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li{
+    list-style: none;
+    color: white;
+    font-size: 17px;
+    transition-duration: 0.5s;
+}
+
+li:hover{
+    color: #E65100;
+    cursor: pointer;
+}
+
+header{
+    width: 100%;
+    height: 100vh;
+    background-color: #292929;
+    position: relative;
+}
+
+.divContainer{
+    width: 80%;
+    height: 90%;
+    margin: auto;
+    position: relative;
+    top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.divColumn{
+    width: 32%;
+    height: 100%;
+    box-shadow: 0px 0px 15px 2px white;
+}
+
+.colon{
+    color: white;
+    font-size: 7vh;
+}
+
+.divColumn h1:nth-child(1){
+    width: fit-content;
+    color: white;
+    margin: auto;
+    margin-top: 10%;
+    font-size: 7vh;
+    margin-bottom: 5%;
+}
+
+.timeContainer{
+    width: 100%;
+    height: 16vh;
+    position: relative;
+    top: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5%;
+    box-sizing: border-box;
+}
+
+.timeDiv{
+    width: 90px;
+    height: 90px;
+    background-color: white;
+    border-radius: 10px;
+    color: #1E1E1E;
+    font-size: 5vh;
+    font-weight: 600;
+    padding-top: 8%;
+    box-sizing: border-box;
+}
+
+.date{
+    width: fit-content;
+    color: white;
+    position: relative;
+    top: 15.5%;
+    left: 5%;
+}
+
+.dateDiv{
+    width: 220px;
+    height: 90px;
+    background-color: white;
+    border-radius: 10px;
+    color: #1E1E1E;
+    font-size: 5vh;
+    font-weight: 600;
+    padding-top: 7%;
+    box-sizing: border-box;
+    position: relative;
+    left: 32%;
+    top: 5%;
+}
+
+.dayDiv{
+    width: 220px;
+    height: 90px;
+    background-color: white;
+    border-radius: 10px;
+    color: #1E1E1E;
+    font-size: 5vh;
+    font-weight: 600;
+    padding-top: 7%;
+    box-sizing: border-box;
+    position: relative;
+    left: 32%;
+    top: 5%;
+}
+
+.clockCircle{
+    width: 250px;
+    height: 250px;
+    background-color: #fff;
+    margin: auto;
+    border-radius: 50%;
+    position: relative;
+    top: 1%;
+    background-image: url('./clock.png');
+    background-size: 100% 100%;
+}
+
+.secondHand{
+    width: 1%;
+    height: 48%;
+    background-color: #F70000;
+    opacity: 0.8;
+    position: absolute;
+    top: 2%;
+    left: 49.65%;
+    transform-origin: bottom;
+    z-index: 1;
+}
+
+.minuteHand{
+    width: 1%;
+    height: 38%;
+    position: absolute;
+    top: 12%;
+    left: 49.65%;
+    background-color: black;
+    opacity: 1;
+    transform-origin: bottom;
+}
+
+.hourHand{
+    width: 1%;
+    height: 30%;
+    position: absolute;
+    top: 21%;
+    left: 49.65%;
+    background-color: black;
+    opacity: 1;
+    transform-origin: bottom;
+    z-index: 2;
+}
+
+.stopWatchContainer{
+    width: 100%;
+    top: 1%;
+    left: 20%;
+    margin-left: -20%;
+    padding: 2%;
+    box-sizing: border-box;
+}
+
+.stopWatchCircle{
+    top: 0%;
+}
+
+.stopWatchHand{
+    left: 49.5%;
+}
+
+.stopWatchDiv{
+    width: 75px;
+    height: 75px;
+    font-size: 3.3vh;
+    padding-top: 6.5%;
+    box-sizing: border-box;
+}
+
+.btn1{
+    width: 100px;
+    height: 45px;
+    margin-top: 5%;
+    font-weight: 500;
+    font-size: 2.3vh;
+}
